@@ -120,101 +120,96 @@ appear in generated list. Here are some most used field options documented.
   descriptions fields are also possible. Check documentation for this.
 */
 
-$opts['fdd']['ID'] = array(
+$opts['fdd']['id'] = array(
   'name'     => 'ID',
   'select'   => 'T',
-  'maxlen'   => 10,
+  'maxlen'   => 45,
+  'sort'     => true
+);
+$opts['fdd']['Name'] = array(
+  'name'     => 'Name',
+  'select'   => 'T',
+  'maxlen'   => 750,
   'sort'     => true
 );
 $opts['fdd']['Sequence'] = array(
   'name'     => 'Sequence',
   'select'   => 'T',
-  'maxlen'   => 150,
+  'maxlen'   => 750,
   'sort'     => true
 );
 $opts['fdd']['Date_'] = array(
-  'name'     => 'Date',
-  'select'   => 'N',
+  'name'     => 'Date ',
+  'select'   => 'T',
   'maxlen'   => 10,
-  'sort'     => true,
-  'default'  => date("Y-m-d", strtotime("now"))
-);
-$opts['fdd']['Author'] = array(
-  'name'     => 'Author',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'lab_members',
-	'column' => 'id')
+  'sort'     => true
 );
 $opts['fdd']['Description'] = array(
   'name'     => 'Description',
   'select'   => 'T',
-  'maxlen'   => 1000000000, //4294967295,
+  'maxlen'   => 4294967295,
   'textarea' => array(
     'rows' => 5,
     'cols' => 50),
+  'sort'     => true
+);
+$opts['fdd']['former_no'] = array(
+  'name'     => 'Former no',
+  'select'   => 'T',
+  'maxlen'   => 750,
   'sort'     => true
 );
 $opts['fdd']['PCR_conditions_predicted'] = array(
   'name'     => 'PCR conditions predicted',
   'select'   => 'T',
-  'maxlen'   => 1000000000, //4294967295,
+  'maxlen'   => 4294967295,
   'textarea' => array(
     'rows' => 5,
     'cols' => 50),
   'sort'     => true
 );
+$opts['fdd']['Author'] = array(
+  'name'     => 'Author',
+  'select'   => 'T',
+  'maxlen'   => 150,
+  'values' => array(
+    'table'  => 'lab_members',
+    'column' => 'id'
+  ),
+
+  'sort'     => true
+);
 $opts['fdd']['Purif'] = array(
   'name'     => 'Purif',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'olig_purif',
-	'column' => 'type')
+  'select'   => 'T',
+  'maxlen'   => 120,
+  'sort'     => true
 );
 $opts['fdd']['storage_minus20freezers'] = array(
-  'name'     => '-20 Freezer',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'storage_minus20freezers',
-	  'column' => 'name'),
-  'default'  => 'Amp'
+  'name'     => 'Storage minus20freezers',
+  'select'   => 'T',
+  'maxlen'   => 300,
+  'sort'     => true
 );
 $opts['fdd']['storage_minus80freezers'] = array(
-  'name'     => '-80 Freezer',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'storage_minus80freezers',
-	  'column' => 'name'),
-  'default'  => 'Amp'
+  'name'     => 'Storage minus80freezers',
+  'select'   => 'T',
+  'maxlen'   => 300,
+  'sort'     => true
 );
 $opts['fdd']['storage_fridges'] = array(
-  'name'     => 'Fridge',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'storage_fridges',
-	  'column' => 'name'),
-  'default'  => 'Amp'
+  'name'     => 'Storage fridges',
+  'select'   => 'T',
+  'maxlen'   => 300,
+  'sort'     => true
 );
 $opts['fdd']['storage_rooms'] = array(
-  'name'     => 'Room',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'storage_rooms',
-	  'column' => 'name'),
-  'default'  => 'Amp'
+  'name'     => 'Storage rooms',
+  'select'   => 'T',
+  'maxlen'   => 300,
+  'sort'     => true
 );
+
 
 require("footers.php");
 ?>

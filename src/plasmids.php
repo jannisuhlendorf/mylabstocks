@@ -121,206 +121,167 @@ appear in generated list. Here are some most used field options documented.
   descriptions fields are also possible. Check documentation for this.
 */
 
-$opts['fdd']['ID'] = array(
+$opts['fdd']['id'] = array(
   'name'     => 'ID',
-  'select'   => 'N',
-  //'options'  => 'AVCPDR', // auto increment
+  'select'   => 'T',
   'maxlen'   => 10,
-  'default'  => '0',
   'sort'     => true
 );
 $opts['fdd']['Name_'] = array(
-  'name'     => 'Name',
+  'name'     => 'Name ',
   'select'   => 'T',
-  'maxlen'   => 50,
+  'maxlen'   => 750,
   'sort'     => true
-);
-$opts['fdd']['sequence'] = array(
-  'name'     => 'Seq',
-  'select'   => 'T',
-  // 'textarea' => array(
-  //   'rows' => 5,
-  // 		'cols' => 10
-  // ),
-  'options'  => 'APD',
-  'maxlen'   => 50000,
-  'sort'     => false,
-  'sqlw' => 'IF($val_qas = "", NULL, $val_qas)' //to use real NULL instead of empty blanks
-);
-$opts['fdd']['Link_to_file'] = array(
-  'name'     => 'Link',
-  'select'   => 'T',
-   'options'  => 'LFPDV',
-  'maxlen'   => 50,
-  'sort'     => true,
-  'sqlw' => 'IF($val_qas = "", NULL, $val_qas)' //to use real NULL instead of empty blanks
 );
 $opts['fdd']['Other_names'] = array(
   'name'     => 'Other names',
   'select'   => 'T',
-  'maxlen'   => 50,
-  'sort'     => true,
-  'sqlw' => 'IF($val_qas = "", NULL, $val_qas)' //to use real NULL instead of empty blanks
+  'maxlen'   => 150,
+  'sort'     => true
 );
-$opts['fdd']['Author'] = array(
-  'name'     => 'Author',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'lab_members',
-	'column' => 'id')
+$opts['fdd']['date_'] = array(
+  'name'     => 'Date ',
+  'select'   => 'T',
+  'maxlen'   => 10,
+  'sort'     => true
+);
+$opts['fdd']['Checkings'] = array(
+  'name'     => 'Checkings',
+  'select'   => 'T',
+  'maxlen'   => 600,
+  'sort'     => true
 );
 $opts['fdd']['Type_'] = array(
   'name'     => 'Type ',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'pl_type',
-	'column' => 'type')
-);
-$opts['fdd']['Marker_1'] = array(
-  'name'     => 'Marker 1',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'pl_yeast_marker',
-	'column' => 'type')
-);
-$opts['fdd']['Marker_2'] = array(
-  'name'     => 'Marker 2',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'pl_yeast_marker',
-	'column' => 'type')
-);
-$opts['fdd']['Construction_Description'] = array(
-  'name'     => 'Construction Description',
   'select'   => 'T',
-  'maxlen'   => 1000000000, //4294967295,
-  'textarea' => array(
-    'rows' => 5,
-    'cols' => 50),
+  'maxlen'   => 75,
+  'sort'     => true
+);
+$opts['fdd']['Markers'] = array(
+  'name'     => 'Markers',
+  'select'   => 'T',
+  'maxlen'   => 900,
+  'sort'     => true
+);
+$opts['fdd']['EKB'] = array(
+  'name'     => 'EKB',
+  'select'   => 'T',
+  'maxlen'   => 10,
+  'sort'     => true
+);
+$opts['fdd']['Bacterial_selection'] = array(
+  'name'     => 'Bacterial selection',
+  'select'   => 'T',
+  'maxlen'   => 750,
   'sort'     => true
 );
 $opts['fdd']['Tags'] = array(
   'name'     => 'Tags',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'pl_tag',
-	'column' => 'type')
-);
-$opts['fdd']['Reporter'] = array(
-  'name'     => 'Reporter',
   'select'   => 'T',
-  'maxlen'   => 25,
+  'maxlen'   => 750,
   'sort'     => true
-);
-$opts['fdd']['Promoter'] = array(
-  'name'     => 'Promoter',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'pl_yeast_promoter',
-	'column' => 'type')
 );
 $opts['fdd']['parent_vector'] = array(
   'name'     => 'Parent vector',
   'select'   => 'T',
-  'maxlen'   => 50,
+  'maxlen'   => 150,
   'sort'     => true
 );
 $opts['fdd']['Insert_'] = array(
   'name'     => 'Insert ',
   'select'   => 'T',
-  'maxlen'   => 50,
+  'maxlen'   => 750,
   'sort'     => true
 );
 $opts['fdd']['Insert_Type'] = array(
   'name'     => 'Insert Type',
   'select'   => 'T',
-  'maxlen'   => 25,
+  'maxlen'   => 75,
+  'sort'     => true
+);
+$opts['fdd']['Construction_Description'] = array(
+  'name'     => 'Construction Description',
+  'select'   => 'T',
+  'maxlen'   => 4294967295,
+  'textarea' => array(
+    'rows' => 5,
+    'cols' => 50),
   'sort'     => true
 );
 $opts['fdd']['Reference_'] = array(
   'name'     => 'Reference ',
   'select'   => 'T',
-  'maxlen'   => 200,
+  'maxlen'   => 600,
   'sort'     => true
 );
-
-$opts['fdd']['date_'] = array(
-  'name'     => 'Date ',
-  'select'   => 'N',
-  'maxlen'   => 10,
-  'sort'     => true,
-  'default'  => date("Y-m-d", strtotime("now"))
-);
-$opts['fdd']['Checkings'] = array(
-  'name'     => 'Checkings',
+$opts['fdd']['Reporter'] = array(
+  'name'     => 'Reporter',
   'select'   => 'T',
-  'maxlen'   => 200,
+  'maxlen'   => 750,
   'sort'     => true
 );
-$opts['fdd']['Bacterial_selection'] = array(
-  'name'     => 'Bacterial selection',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'pl_bacterial_selection',
-	'column' => 'type'),
-  'default'  => 'Amp'
+$opts['fdd']['Promoter'] = array(
+  'name'     => 'Promoter',
+  'select'   => 'T',
+  'maxlen'   => 750,
+  'sort'     => true
+);
+$opts['fdd']['Link_to_file'] = array(
+  'name'     => 'Link to file',
+  'select'   => 'T',
+  'maxlen'   => 300,
+  'sort'     => true
+);
+$opts['fdd']['sequence'] = array(
+  'name'     => 'Sequence',
+  'select'   => 'T',
+  'maxlen'   => 196605,
+  'textarea' => array(
+    'rows' => 5,
+    'cols' => 50),
+  'sort'     => true
+);
+$opts['fdd']['image_file'] = array(
+  'name'     => 'Image file',
+  'select'   => 'T',
+  'maxlen'   => 300,
+  'sort'     => true
+);
+$opts['fdd']['Author'] = array(
+  'name'     => 'Author',
+  'select'   => 'T',
+  'maxlen'   => 150,
+  'values' => array(
+    'table'  => 'lab_members',
+    'column' => 'id'
+  ),
+
+  'sort'     => true
 );
 $opts['fdd']['storage_minus20freezers'] = array(
-  'name'     => '-20 Freezer',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'storage_minus20freezers',
-	  'column' => 'name'),
-  'default'  => 'Amp'
+  'name'     => 'Storage minus20freezers',
+  'select'   => 'T',
+  'maxlen'   => 300,
+  'sort'     => true
 );
 $opts['fdd']['storage_minus80freezers'] = array(
-  'name'     => '-80 Freezer',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'storage_minus80freezers',
-	  'column' => 'name'),
-  'default'  => 'Amp'
+  'name'     => 'Storage minus80freezers',
+  'select'   => 'T',
+  'maxlen'   => 300,
+  'sort'     => true
 );
 $opts['fdd']['storage_fridges'] = array(
-  'name'     => 'Fridge',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'storage_fridges',
-	  'column' => 'name'),
-  'default'  => 'Amp'
+  'name'     => 'Storage fridges',
+  'select'   => 'T',
+  'maxlen'   => 300,
+  'sort'     => true
 );
 $opts['fdd']['storage_rooms'] = array(
-  'name'     => 'Room',
-  'select'   => 'D',
-  'maxlen'   => 25,
-  'sort'     => true,
-  'values'   => array(
-  	'table'  => 'storage_rooms',
-	  'column' => 'name'),
-  'default'  => 'Amp'
+  'name'     => 'Storage rooms',
+  'select'   => 'T',
+  'maxlen'   => 300,
+  'sort'     => true
 );
-
-
 
 //link to sequence file:
 $opts['fdd']['Link_to_file']['URL'] = '$value';
