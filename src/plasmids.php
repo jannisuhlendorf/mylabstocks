@@ -121,7 +121,7 @@ appear in generated list. Here are some most used field options documented.
   descriptions fields are also possible. Check documentation for this.
 */
 
-$opts['fdd']['id'] = array(
+$opts['fdd']['ID'] = array(
   'name'     => 'ID',
   'select'   => 'T',
   'maxlen'   => 10,

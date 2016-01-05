@@ -161,14 +161,7 @@ appear in generated list. Here are some most used field options documented.
 */
 
 
-
-
-
-
-
-
-
-$opts['fdd']['id'] = array(
+$opts['fdd']['ID'] = array(
   'name'     => 'ID',
   'select'   => 'T',
   'maxlen'   => 10,
