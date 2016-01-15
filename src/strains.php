@@ -170,19 +170,13 @@ $opts['fdd']['ID'] = array(
 $opts['fdd']['Name_'] = array(
   'name'     => 'Name ',
   'select'   => 'T',
-  'maxlen'   => 75,
+  'maxlen'   => 750,
   'sort'     => true
 );
 $opts['fdd']['Date_'] = array(
   'name'     => 'Date ',
   'select'   => 'T',
   'maxlen'   => 10,
-  'sort'     => true
-);
-$opts['fdd']['Parental_strain'] = array(
-  'name'     => 'Parental strain',
-  'select'   => 'T',
-  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['Genotype'] = array(
@@ -221,13 +215,13 @@ $opts['fdd']['Comments'] = array(
 $opts['fdd']['General_Background'] = array(
   'name'     => 'General Background',
   'select'   => 'T',
-  'maxlen'   => 75,
+  'maxlen'   => 1500,
   'sort'     => true
 );
 $opts['fdd']['Mating_Type'] = array(
   'name'     => 'Mating Type',
   'select'   => 'T',
-  'maxlen'   => 75,
+  'maxlen'   => 150,
   'sort'     => true
 );
 $opts['fdd']['Plasmid'] = array(
@@ -244,61 +238,67 @@ $opts['fdd']['Plasmid'] = array(
 $opts['fdd']['ADE2'] = array(
   'name'     => 'ADE2',
   'select'   => 'T',
-  'maxlen'   => 75,
+  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['HIS3'] = array(
   'name'     => 'HIS3',
   'select'   => 'T',
-  'maxlen'   => 75,
+  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['LEU2'] = array(
   'name'     => 'LEU2',
   'select'   => 'T',
-  'maxlen'   => 150,
+  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['LYS2'] = array(
   'name'     => 'LYS2',
   'select'   => 'T',
-  'maxlen'   => 75,
+  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['TRP1'] = array(
   'name'     => 'TRP1',
   'select'   => 'T',
-  'maxlen'   => 75,
+  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['URA3'] = array(
   'name'     => 'URA3',
   'select'   => 'T',
-  'maxlen'   => 75,
+  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['HO_'] = array(
   'name'     => 'HO ',
   'select'   => 'T',
-  'maxlen'   => 150,
+  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['locus1'] = array(
   'name'     => 'Locus1',
   'select'   => 'T',
-  'maxlen'   => 225,
+  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['locus2'] = array(
   'name'     => 'Locus2',
   'select'   => 'T',
-  'maxlen'   => 150,
+  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['locus3'] = array(
   'name'     => 'Locus3',
   'select'   => 'T',
-  'maxlen'   => 150,
+  'maxlen'   => 300,
+  'sort'     => true
+);
+$opts['fdd']['Parental_strain'] = array(
+  'name'     => 'Parental strain',
+  'select'   => 'T',
+  'maxlen'   => 1500,
   'sort'     => true
 );
 $opts['fdd']['Obtained_by'] = array(
@@ -316,7 +316,7 @@ $opts['fdd']['Checkings'] = array(
 $opts['fdd']['Other_names'] = array(
   'name'     => 'Other names',
   'select'   => 'T',
-  'maxlen'   => 75,
+  'maxlen'   => 1500,
   'sort'     => true
 );
 $opts['fdd']['Reference_'] = array(
@@ -328,13 +328,13 @@ $opts['fdd']['Reference_'] = array(
 $opts['fdd']['locus4'] = array(
   'name'     => 'Locus4',
   'select'   => 'T',
-  'maxlen'   => 75,
+  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['locus5'] = array(
   'name'     => 'Locus5',
   'select'   => 'T',
-  'maxlen'   => 150,
+  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['Cytoplasmic_Character'] = array(
@@ -352,7 +352,7 @@ $opts['fdd']['Last_modified'] = array(
 $opts['fdd']['MET15'] = array(
   'name'     => 'MET15',
   'select'   => 'T',
-  'maxlen'   => 75,
+  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['Author'] = array(
@@ -393,7 +393,7 @@ $opts['fdd']['storage_rooms'] = array(
 $opts['fdd']['species'] = array(
   'name'     => 'Species',
   'select'   => 'T',
-  'maxlen'   => 150,
+  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['relevant_plasmids'] = array(
@@ -425,3 +425,4 @@ $opts['triggers']['update']['pre'][]    = 'strains.MVC.php';
 
 require("footers.php");
 ?>
+

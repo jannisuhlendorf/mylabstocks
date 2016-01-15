@@ -121,6 +121,8 @@ appear in generated list. Here are some most used field options documented.
   descriptions fields are also possible. Check documentation for this.
 */
 
+
+
 $opts['fdd']['ID'] = array(
   'name'     => 'ID',
   'select'   => 'T',
@@ -136,7 +138,7 @@ $opts['fdd']['Name_'] = array(
 $opts['fdd']['Other_names'] = array(
   'name'     => 'Other names',
   'select'   => 'T',
-  'maxlen'   => 150,
+  'maxlen'   => 750,
   'sort'     => true
 );
 $opts['fdd']['date_'] = array(
@@ -154,7 +156,7 @@ $opts['fdd']['Checkings'] = array(
 $opts['fdd']['Type_'] = array(
   'name'     => 'Type ',
   'select'   => 'T',
-  'maxlen'   => 75,
+  'maxlen'   => 1500,
   'sort'     => true
 );
 $opts['fdd']['Markers'] = array(
@@ -184,7 +186,7 @@ $opts['fdd']['Tags'] = array(
 $opts['fdd']['parent_vector'] = array(
   'name'     => 'Parent vector',
   'select'   => 'T',
-  'maxlen'   => 150,
+  'maxlen'   => 1500,
   'sort'     => true
 );
 $opts['fdd']['Insert_'] = array(
@@ -196,7 +198,7 @@ $opts['fdd']['Insert_'] = array(
 $opts['fdd']['Insert_Type'] = array(
   'name'     => 'Insert Type',
   'select'   => 'T',
-  'maxlen'   => 75,
+  'maxlen'   => 750,
   'sort'     => true
 );
 $opts['fdd']['Construction_Description'] = array(
@@ -211,7 +213,7 @@ $opts['fdd']['Construction_Description'] = array(
 $opts['fdd']['Reference_'] = array(
   'name'     => 'Reference ',
   'select'   => 'T',
-  'maxlen'   => 600,
+  'maxlen'   => 1500,
   'sort'     => true
 );
 $opts['fdd']['Reporter'] = array(
