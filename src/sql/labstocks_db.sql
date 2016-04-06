@@ -1224,7 +1224,7 @@ CREATE TABLE `ecoli_stocks` (
   `Plasmid` int(10) unsigned DEFAULT NULL,
   `Insert` varchar(500) DEFAULT NULL,
   `Source` varchar(500) DEFAULT NULL,
-  `Features/Marker` varchar(500) DEFAULT NULL,
+  `Features_Marker` varchar(500) DEFAULT NULL,
   `Original_no` int(10) DEFAULT NULL,
   `Author` varchar(50) DEFAULT NULL,
   `Comments` longtext,
