@@ -1,6 +1,6 @@
 from peewee import *
 
-database = MySQLDatabase('labstocks_db', **{'host': 'localhost', 'user': 'superuser'})
+database = MySQLDatabase('test_labstocks_db', **{'host': 'localhost', 'user': 'superuser'})
 
 class UnknownField(object):
     pass
@@ -104,6 +104,50 @@ class LabMembers(BaseModel):
 
     class Meta:
         db_table = 'lab_members'
+
+class Plasmids(BaseModel):
+    author = ForeignKeyField(db_column='Author', null=True, rel_model=LabMembers, to_field='id')
+    bacterial_selection = CharField(db_column='Bacterial_selection', null=True)
+    checkings = CharField(db_column='Checkings', null=True)
+    construction_description = TextField(db_column='Construction_Description', null=True)
+    ekb = IntegerField(db_column='EKB', null=True)
+    insert_ = CharField(db_column='Insert_', null=True)
+    insert_type = CharField(db_column='Insert_Type', null=True)
+    link_to_file = CharField(db_column='Link_to_file', null=True, unique=True)
+    markers = CharField(db_column='Markers', null=True)
+    name_ = CharField(db_column='Name_', null=True)
+    other_names = CharField(db_column='Other_names', null=True)
+    promoter = CharField(db_column='Promoter', null=True)
+    reference_ = CharField(db_column='Reference_', null=True)
+    reporter = CharField(db_column='Reporter', null=True)
+    tags = CharField(db_column='Tags', null=True)
+    type_ = CharField(db_column='Type_', null=True)
+    date_ = DateField(null=True)
+    image_file = CharField(null=True)
+    parent_vector = CharField(null=True)
+    sequence = TextField(null=True)
+    storage_fridges = CharField(null=True)
+    storage_minus20freezers = CharField(null=True)
+    storage_minus80freezers = CharField(null=True)
+    storage_rooms = CharField(null=True)
+
+    class Meta:
+        db_table = 'plasmids'
+
+class EcoliStocks(BaseModel):
+    author = ForeignKeyField(db_column='Author', null=True, rel_model=LabMembers, to_field='id')
+    comments = TextField(db_column='Comments', null=True)
+    date_ = DateField(db_column='Date_', null=True)
+    ekb_no = PrimaryKeyField(db_column='EKB_no')
+    features_marker = CharField(db_column='Features_Marker', null=True)
+    insert = CharField(db_column='Insert', null=True)
+    name_ = CharField(db_column='Name_')
+    original_no = IntegerField(db_column='Original_no', null=True)
+    plasmid = ForeignKeyField(db_column='Plasmid', null=True, rel_model=Plasmids, to_field='id')
+    source = CharField(db_column='Source', null=True)
+
+    class Meta:
+        db_table = 'ecoli_stocks'
 
 class Notebooks(BaseModel):
     author = CharField(db_column='Author', index=True)
@@ -249,35 +293,6 @@ class PlYeastPromoter(BaseModel):
 
     class Meta:
         db_table = 'pl_yeast_promoter'
-
-class Plasmids(BaseModel):
-    author = ForeignKeyField(db_column='Author', null=True, rel_model=LabMembers, to_field='id')
-    bacterial_selection = CharField(db_column='Bacterial_selection', null=True)
-    checkings = CharField(db_column='Checkings', null=True)
-    construction_description = TextField(db_column='Construction_Description', null=True)
-    ekb = IntegerField(db_column='EKB', null=True)
-    insert_ = CharField(db_column='Insert_', null=True)
-    insert_type = CharField(db_column='Insert_Type', null=True)
-    link_to_file = CharField(db_column='Link_to_file', null=True, unique=True)
-    markers = CharField(db_column='Markers', null=True)
-    name_ = CharField(db_column='Name_', null=True)
-    other_names = CharField(db_column='Other_names', null=True)
-    promoter = CharField(db_column='Promoter', null=True)
-    reference_ = CharField(db_column='Reference_', null=True)
-    reporter = CharField(db_column='Reporter', null=True)
-    tags = CharField(db_column='Tags', null=True)
-    type_ = CharField(db_column='Type_', null=True)
-    date_ = DateField(null=True)
-    image_file = CharField(null=True)
-    parent_vector = CharField(null=True)
-    sequence = TextField(null=True)
-    storage_fridges = CharField(null=True)
-    storage_minus20freezers = CharField(null=True)
-    storage_minus80freezers = CharField(null=True)
-    storage_rooms = CharField(null=True)
-
-    class Meta:
-        db_table = 'plasmids'
 
 class StAde2(BaseModel):
     alleles = CharField(primary_key=True)
