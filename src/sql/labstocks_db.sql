@@ -1214,10 +1214,10 @@ UNLOCK TABLES;
 -- Table structure for table `strains`
 --
 
-DROP TABLE IF EXISTS `Ecoli_stocks`;
+DROP TABLE IF EXISTS `ecoli_stocks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Ecoli_stocks` (
+CREATE TABLE `ecoli_stocks` (
   `EKB_no` int(10) unsigned NOT NULL,
   `Name_` varchar(250) NOT NULL,
   `Date_` date DEFAULT NULL,
@@ -1228,10 +1228,10 @@ CREATE TABLE `Ecoli_stocks` (
   `Original_no` int(10) DEFAULT NULL,
   `Author` varchar(50) DEFAULT NULL,
   `Comments` longtext,
-  `EKP_no` int(10) unsigned NOT NULL,
   PRIMARY KEY (`EKB_no`),
   KEY `Author` (`Author`),
-  CONSTRAINT `Ecoli_stocks_ibfk_1` FOREIGN KEY (`PLasmid`) REFERENCES `plasmids` (`id`)
+  CONSTRAINT  `ecoli_stocks_ibfk_1` FOREIGN KEY (`PLasmid`) REFERENCES `plasmids` (`id`),
+  CONSTRAINT  `ecoli_stocks_ibfk_2` FOREIGN KEY (`Author`) REFERENCES `lab_members` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*CONSTRAINT `Ecoli_stocks_ibfk_1` FOREIGN KEY (`Vector`) REFERENCES `plasmids` (`id`) WHERE `Ecoli_stocks` (`Vector`) EQUALS `plasmids` (`Name`) AND `Ecoli_stocks` (`Insert`) EQUALS `plasmids` (`Insert`)*/
@@ -1240,10 +1240,10 @@ CREATE TABLE `Ecoli_stocks` (
 -- Dumping data for table `Ecoli_stocks`
 --
 
-LOCK TABLES `Ecoli_stocks` WRITE;
-/*!40000 ALTER TABLE `Ecoli_stocks` DISABLE KEYS */;
+LOCK TABLES `ecoli_stocks` WRITE;
+/*!40000 ALTER TABLE `ecoli_stocks` DISABLE KEYS */;
 
-/*!40000 ALTER TABLE `Ecoli_stocks` ENABLE KEYS */;
+/*!40000 ALTER TABLE `ecoli_stocks` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
