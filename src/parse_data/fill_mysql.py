@@ -8,6 +8,7 @@ import peewee
 import datetime
 import sys
 import labstocks
+import os
 
 
 
@@ -269,6 +270,7 @@ def parse_yeast_stock( txt_path ):
 
 
 def convert_yeast_stock_excel( path ):
+
     df = parse_yeast_stock( path  )
     df['general_background'] = ''
     for i,row in df.iterrows():
@@ -280,7 +282,9 @@ def convert_yeast_stock_excel( path ):
 
 if __name__=='__main__':
 
-    df = convert_yeast_stock_excel( 'data/TBP_yeast_stocks.txt'  )
+    data_dir = '../../../data/'
+
+    df = convert_yeast_stock_excel( os.path.join( data_dir, 'TBP_yeast_stocks.txt' )  )
     df.to_csv( 'strains_exp.csv' )
 
     labstocks.database.connect_kwargs['passwd'] = sys.argv[1]
@@ -292,9 +296,8 @@ if __name__=='__main__':
     users = ["Gabi", "Bjorn", "Lotte", "Severin", "Jannis", "Paula", "Christiane", "Lisa"]
     create_users( users )
     
-    #create_oligos( 'data/TBP_all_primers.xls', users[0] )
-    create_oligos( 'data/TBP_all_primers.csv', users[0] )
+    create_oligos( os.path.join( data_dir, 'TBP_all_primers.csv' ), users[0] )
 
-    create_plasmids( 'data/TBP_plasmids.csv' )
+    create_plasmids( os.path.join( data_dir, 'TBP_plasmids.csv' ) )
 
-    create_strains( 'data/TBP_yeast_stocks.txt', users[0] )
+    create_strains( os.path.join( data_dir, 'TBP_yeast_stocks.txt' ), users[0] )
