@@ -160,7 +160,6 @@ appear in generated list. Here are some most used field options documented.
   descriptions fields are also possible. Check documentation for this.
 */
 
-
 $opts['fdd']['ID'] = array(
   'name'     => 'ID',
   'select'   => 'T',
@@ -230,7 +229,8 @@ $opts['fdd']['Plasmid'] = array(
   'maxlen'   => 10,
   'values' => array(
     'table'  => 'plasmids',
-    'column' => 'id'
+    'column' => 'id',
+    'description' => 'Name_'
   ),
 
   'sort'     => true
@@ -277,6 +277,12 @@ $opts['fdd']['HO_'] = array(
   'maxlen'   => 300,
   'sort'     => true
 );
+$opts['fdd']['MET15'] = array(
+  'name'     => 'MET15',
+  'select'   => 'T',
+  'maxlen'   => 300,
+  'sort'     => true
+);
 $opts['fdd']['locus1'] = array(
   'name'     => 'Locus1',
   'select'   => 'T',
@@ -307,52 +313,36 @@ $opts['fdd']['Obtained_by'] = array(
   'maxlen'   => 750,
   'sort'     => true
 );
-$opts['fdd']['Checkings'] = array(
-  'name'     => 'Checkings',
-  'select'   => 'T',
-  'maxlen'   => 675,
-  'sort'     => true
-);
-$opts['fdd']['Other_names'] = array(
-  'name'     => 'Other names',
-  'select'   => 'T',
-  'maxlen'   => 1500,
-  'sort'     => true
-);
 $opts['fdd']['Reference_'] = array(
   'name'     => 'Reference ',
   'select'   => 'T',
   'maxlen'   => 1500,
   'sort'     => true
 );
-$opts['fdd']['locus4'] = array(
-  'name'     => 'Locus4',
+$opts['fdd']['clone_no'] = array(
+  'name'     => 'Clone no',
   'select'   => 'T',
-  'maxlen'   => 300,
+  'maxlen'   => 10,
   'sort'     => true
 );
-$opts['fdd']['locus5'] = array(
-  'name'     => 'Locus5',
+$opts['fdd']['SGD_ID'] = array(
+  'name'     => 'SGD ID',
   'select'   => 'T',
-  'maxlen'   => 300,
+  'maxlen'   => 45,
+  'sort'     => true,
+  'URL'      => 'http://yeastgenome.org/locus/$value/overview',
+  'URLtarget'=> '_blank'
+);
+$opts['fdd']['labbook_reference'] = array(
+  'name'     => 'Labbook reference',
+  'select'   => 'T',
+  'maxlen'   => 1500,
   'sort'     => true
 );
 $opts['fdd']['Cytoplasmic_Character'] = array(
   'name'     => 'Cytoplasmic Character',
   'select'   => 'T',
   'maxlen'   => 750,
-  'sort'     => true
-);
-$opts['fdd']['Last_modified'] = array(
-  'name'     => 'Last modified',
-  'select'   => 'T',
-  'maxlen'   => 10,
-  'sort'     => true
-);
-$opts['fdd']['MET15'] = array(
-  'name'     => 'MET15',
-  'select'   => 'T',
-  'maxlen'   => 300,
   'sort'     => true
 );
 $opts['fdd']['Author'] = array(
@@ -366,55 +356,12 @@ $opts['fdd']['Author'] = array(
 
   'sort'     => true
 );
-$opts['fdd']['storage_minus20freezers'] = array(
-  'name'     => 'Storage minus20freezers',
+$opts['fdd']['storage_box'] = array(
+  'name'     => 'Storage box',
   'select'   => 'T',
-  'maxlen'   => 300,
+  'maxlen'   => 1500,
   'sort'     => true
 );
-$opts['fdd']['storage_minus80freezers'] = array(
-  'name'     => 'Storage minus80freezers',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['storage_fridges'] = array(
-  'name'     => 'Storage fridges',
-  'select'   => 'T',
-  'maxlen'   => 600,
-  'sort'     => true
-);
-$opts['fdd']['storage_rooms'] = array(
-  'name'     => 'Storage rooms',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['species'] = array(
-  'name'     => 'Species',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['relevant_plasmids'] = array(
-  'name'     => 'Relevant plasmids',
-  'select'   => 'T',
-  'maxlen'   => 4294967295,
-  'textarea' => array(
-    'rows' => 5,
-    'cols' => 50),
-  'sort'     => true
-);
-$opts['fdd']['relevant_oligos'] = array(
-  'name'     => 'Relevant oligos',
-  'select'   => 'T',
-  'maxlen'   => 4294967295,
-  'textarea' => array(
-    'rows' => 5,
-    'cols' => 50),
-  'sort'     => true
-);
-
 
 // TRIGGER
 // Before displaying the view page
@@ -425,4 +372,3 @@ $opts['triggers']['update']['pre'][]    = 'strains.MVC.php';
 
 require("footers.php");
 ?>
-
