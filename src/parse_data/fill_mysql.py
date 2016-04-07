@@ -91,6 +91,9 @@ def create_plasmids( csv_list ):
     # create plasmids
     plasmids = pd.read_csv( csv_list )
 
+    # insert empty plasmid to be able to not select a plasmid in strain table
+    labstocks.Plasmids.insert( id=0 ).execute()
+
     for pos,row in plasmids.iterrows():
 
         author = users[0]
@@ -178,8 +181,7 @@ def create_strains( txt_path, user ):
         
         if 'mata/alpha' in row.genotype.lower():
             mating = 'MATa/MATalpha'
-        elif 'mata' in row.genotype.lower():
-            #TODO: this is also true for matalpha (see e.g. strain 411)
+        elif 'mata' in row.genotype.lower() and not 'matalpha' in row.genotype.lower():
             mating = 'MATa'
         elif 'matalpha' in row.genotype.lower():
             mating = 'MATalpha'

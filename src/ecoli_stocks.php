@@ -1,45 +1,7 @@
 <?php
 session_start ();
 require("headers.php");
-
-
-
-if ($session->mode == "super") {
-  print("<p><a href='publish_it.php'>Publish genotypes.</a></p>");
-}
-
-
-// if (array_key_exists("action", $_REQUEST)) {
-//   if ($_REQUEST["action"] == "SEARCH_IN_GENOTYPE") {
-//     $keys = split(" ", $_REQUEST["geno"]); 
-//     print_r($keys );
-// 
-//     $tmp_filter = "ynl095c:PBY-306-ynl095C";
-//     $likes = "";
-//     foreach ($keys as $k) {
-//       if ($k != "") {
-//         $likes .= "`locus1` LIKE '%$k%' OR `locus2` LIKE '%$k%' OR `locus3` LIKE '%$k%' OR `locus4` LIKE '%$k%' OR `locus5` LIKE '%$k%' OR `ADE2` LIKE '%$k%' OR `HIS3` LIKE '%$k%' OR `LEU2` LIKE '%$k%' OR `LYS2` LIKE '%$k%' OR `MET15` LIKE '%$k%' OR `TRP1` LIKE '%$k%' OR `URA3` LIKE '%$k%' OR `HO_` LIKE '%$k%' OR `Cytoplasmic_Character` LIKE '%$k%' ";
-//       }
-//     }
-//     $opts["filters"] = $likes . " " ;
-//   }
-// }
-// 
-// if (!array_key_exists("PME_sys_operation", $_REQUEST)) {
-//   if (array_key_exists("geno", $_REQUEST)) {
-//     $geno = $_REQUEST["geno"]; 
-//   } else {
-//     $geno = "";
-//   }
-//   echo "<form action='' method='post'>";
-//   //echo "<fieldset style='border:1px plain black; width: 300px;'>";
-//   //echo "<legend>Search in genotype</legend>";
-//   echo "Search in genotype: <input type='hidden' name='action' value='SEARCH_IN_GENOTYPE'/>";
-//   echo "<input type='text' name='geno' value='$geno'/>";
-//   echo "<input type='button' name='send' value='Search' onclick='return this.form.submit();'/>";
-// //  echo "</fieldset>";
-//   echo "</form>";
-// }
+//$opts["filters"] = "`ID`=330";
 
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
@@ -56,7 +18,6 @@ if ($session->mode == "super") {
  *            phpMyEditSetup.php script: 1.50
  *              generating setup script: 1.50
  */
-
 
 /*************************/
 //
@@ -160,8 +121,9 @@ appear in generated list. Here are some most used field options documented.
   descriptions fields are also possible. Check documentation for this.
 */
 
-$opts['fdd']['ID'] = array(
-  'name'     => 'ID',
+
+$opts['fdd']['EKB_no'] = array(
+  'name'     => 'EKB no',
   'select'   => 'T',
   'maxlen'   => 10,
   'sort'     => true
@@ -178,51 +140,6 @@ $opts['fdd']['Date_'] = array(
   'maxlen'   => 10,
   'sort'     => true
 );
-$opts['fdd']['Genotype'] = array(
-  'name'     => 'Genotype',
-  'select'   => 'T',
-  'maxlen'   => 1500,
-  'sort'     => true
-);
-$opts['fdd']['Phenotype'] = array(
-  'name'     => 'Phenotype',
-  'select'   => 'T',
-  'maxlen'   => 1500,
-  'sort'     => true
-);
-$opts['fdd']['Growth_req'] = array(
-  'name'     => 'Growth req',
-  'select'   => 'T',
-  'maxlen'   => 1500,
-  'sort'     => true
-);
-$opts['fdd']['original_no'] = array(
-  'name'     => 'Original no',
-  'select'   => 'T',
-  'maxlen'   => 10,
-  'sort'     => true
-);
-$opts['fdd']['Comments'] = array(
-  'name'     => 'Comments',
-  'select'   => 'T',
-  'maxlen'   => 4294967295,
-  'textarea' => array(
-    'rows' => 5,
-    'cols' => 50),
-  'sort'     => true
-);
-$opts['fdd']['General_Background'] = array(
-  'name'     => 'General Background',
-  'select'   => 'T',
-  'maxlen'   => 1500,
-  'sort'     => true
-);
-$opts['fdd']['Mating_Type'] = array(
-  'name'     => 'Mating Type',
-  'select'   => 'T',
-  'maxlen'   => 150,
-  'sort'     => true
-);
 $opts['fdd']['Plasmid'] = array(
   'name'     => 'Plasmid',
   'select'   => 'T',
@@ -230,118 +147,32 @@ $opts['fdd']['Plasmid'] = array(
   'values' => array(
     'table'  => 'plasmids',
     'column' => 'id',
-    'description' => 'Name_',
+    'description' => 'Name_'
   ),
   'sort'     => true
 );
-$opts['fdd']['ADE2'] = array(
-  'name'     => 'ADE2',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['HIS3'] = array(
-  'name'     => 'HIS3',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['LEU2'] = array(
-  'name'     => 'LEU2',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['LYS2'] = array(
-  'name'     => 'LYS2',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['TRP1'] = array(
-  'name'     => 'TRP1',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['URA3'] = array(
-  'name'     => 'URA3',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['HO_'] = array(
-  'name'     => 'HO ',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['MET15'] = array(
-  'name'     => 'MET15',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['locus1'] = array(
-  'name'     => 'Locus1',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['locus2'] = array(
-  'name'     => 'Locus2',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['locus3'] = array(
-  'name'     => 'Locus3',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-$opts['fdd']['Parental_strain'] = array(
-  'name'     => 'Parental strain',
+$opts['fdd']['Insert'] = array(
+  'name'     => 'Insert',
   'select'   => 'T',
   'maxlen'   => 1500,
   'sort'     => true
 );
-$opts['fdd']['Obtained_by'] = array(
-  'name'     => 'Obtained by',
-  'select'   => 'T',
-  'maxlen'   => 750,
-  'sort'     => true
-);
-$opts['fdd']['Reference_'] = array(
-  'name'     => 'Reference ',
+$opts['fdd']['Source'] = array(
+  'name'     => 'Source',
   'select'   => 'T',
   'maxlen'   => 1500,
   'sort'     => true
 );
-$opts['fdd']['clone_no'] = array(
-  'name'     => 'Clone no',
+$opts['fdd']['Features_Marker'] = array(
+  'name'     => 'Features Marker',
+  'select'   => 'T',
+  'maxlen'   => 1500,
+  'sort'     => true
+);
+$opts['fdd']['Original_no'] = array(
+  'name'     => 'Original no',
   'select'   => 'T',
   'maxlen'   => 10,
-  'sort'     => true
-);
-$opts['fdd']['SGD_ID'] = array(
-  'name'     => 'SGD ID',
-  'select'   => 'T',
-  'maxlen'   => 45,
-  'sort'     => true,
-  'URL'      => 'http://yeastgenome.org/locus/$value/overview',
-  'URLtarget'=> '_blank'
-);
-$opts['fdd']['labbook_reference'] = array(
-  'name'     => 'Labbook reference',
-  'select'   => 'T',
-  'maxlen'   => 1500,
-  'sort'     => true
-);
-$opts['fdd']['Cytoplasmic_Character'] = array(
-  'name'     => 'Cytoplasmic Character',
-  'select'   => 'T',
-  'maxlen'   => 750,
   'sort'     => true
 );
 $opts['fdd']['Author'] = array(
@@ -355,10 +186,13 @@ $opts['fdd']['Author'] = array(
 
   'sort'     => true
 );
-$opts['fdd']['storage_box'] = array(
-  'name'     => 'Storage box',
+$opts['fdd']['Comments'] = array(
+  'name'     => 'Comments',
   'select'   => 'T',
-  'maxlen'   => 1500,
+  'maxlen'   => 4294967295,
+  'textarea' => array(
+    'rows' => 5,
+    'cols' => 50),
   'sort'     => true
 );
 

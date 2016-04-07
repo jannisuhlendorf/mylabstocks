@@ -1179,7 +1179,7 @@ CREATE TABLE `strains` (
   `Parental_strain` varchar(500) DEFAULT NULL,
   `Obtained_by` varchar(250) DEFAULT NULL,
   `Reference_` varchar(500) DEFAULT NULL,
-  `clone_no` int(10) DEFAULT NULL,
+  `clone_no` varchar(50) DEFAULT NULL,
   `SGD_ID` varchar(15) DEFAULT NULL,
   `labbook_reference` varchar(500) DEFAULT NULL,
   `Cytoplasmic_Character` varchar(250) DEFAULT NULL,
