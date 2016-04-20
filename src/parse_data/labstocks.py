@@ -140,7 +140,7 @@ class EcoliStocks(BaseModel):
     date_ = DateField(db_column='Date_', null=True)
     ekb_no = PrimaryKeyField(db_column='EKB_no')
     features_marker = CharField(db_column='Features_Marker', null=True)
-    insert = CharField(db_column='Insert', null=True)
+    insertion = CharField(db_column='Insert', null=True) #calling this attribute 'insert' gives a TypeError when trying to insert() something into the table
     name_ = CharField(db_column='Name_')
     original_no = IntegerField(db_column='Original_no', null=True)
     plasmid = ForeignKeyField(db_column='Plasmid', null=True, rel_model=Plasmids, to_field='id')
