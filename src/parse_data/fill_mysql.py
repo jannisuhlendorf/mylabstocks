@@ -17,8 +17,10 @@ def clean_db():
     labstocks.Strains.delete().execute()
     labstocks.PlFeatures.delete().execute()
     labstocks.Oligos.delete().execute()
+    labstocks.EcoliStocks.delete().execute()
     labstocks.Plasmids.delete().execute()
     labstocks.LabMembers.delete().execute()
+#    labstocks.EcoliStocks.delete().execute()
 
 def create_users( user_list ):
     # create users
@@ -222,6 +224,56 @@ def create_strains( txt_path, user ):
                                   ura3 = ura3 ).execute()
 
 
+
+def create_ecoli_stocks( txt_path ):
+    skip = [135] # weird entries that should be skipped
+    df = parse_ecoli_stock( txt_path )
+    print df.axes
+    print df.index
+    print df.columns
+
+    for row in df.index:
+#        row = row.split('\t')
+#        print len(row)
+        print row
+        if row in skip:
+             continue
+
+        if row in [180, 181]:
+            author = users[6]
+        else:
+            author = users[0]
+
+        if pd.isnull(df.loc[row, 'Date']):
+            datum = None
+        else:
+            datum = df.loc[row, 'Date']
+            tmp = datum.split("/")
+            datum = tmp[1] + "-" + tmp[0] + "-01"
+
+        if pd.isnull(df.loc[row, 'Comments']):
+            comment = None
+        else:                                                                                                                                                                                                
+            comment = df.loc[row, 'Comments']
+
+        if pd.isnull(df.loc[row, 'EKP No.']):
+            plasmid = None
+        else:
+            plasmid = df.loc[row, 'EKP No.']
+
+        print row, df.loc[row, 'E.coli strain'], datum, plasmid, df.loc[row, 'Source'], df.loc[row, 'Features/ Marker'], author, comment
+
+        labstocks.EcoliStocks.insert( ekb_no = row,
+                                       name_ = df.loc[row, 'E.coli strain'],
+                                       date_ = datum,
+                                       plasmid = plasmid,
+#                                       insertion = df.loc[row, 'Insert'],
+                                       source = df.loc[row, 'Source'],
+                                       features_marker = df.loc[row, 'Features/ Marker'],
+                                       author = author,
+                                       comments = comment ).execute()
+
+
 def parse_yeast_stock( txt_path ):
     # convert our yeast stock word file to a pandas dataframe
 
@@ -271,6 +323,24 @@ def parse_yeast_stock( txt_path ):
     return df
 
 
+def parse_ecoli_stock( txt_path ):
+    skip = []#[ 135 ]
+    chars_to_remove = ['\n', '\r']
+
+    key_external = ['EKB No.', 'E.coli strain', 'Plasmid', 'Insert', 'Source', 'Features/ Marker', 'Date', 'Comments', 'EKP No.']
+    key_internal = ['ekb_no',  'name',          'plasmid', 'insert', 'source', 'features_marker',  'date', 'comments', 'ekp_no']
+    parsed = []
+
+#    df = pd.read_excel( txt_path, ignore_index=True, columns=key_internal )
+    df = pd.read_excel( txt_path, index_col='EKB No.', columns=key_internal )
+#    print df
+    for line in df:
+        for c in chars_to_remove:
+            line = line.replace(c, '')
+                                                                        
+    return df
+
+
 def convert_yeast_stock_excel( path ):
 
     df = parse_yeast_stock( path  )
@@ -284,7 +354,8 @@ def convert_yeast_stock_excel( path ):
 
 if __name__=='__main__':
 
-    data_dir = '../../../data/'
+    #data_dir = '../../../data/' # when Jannis updates
+    data_dir = '/home/jwodke/Desktop/job/projects/labDB/jannis/lab_db2/data/' # on my computer!
 
     df = convert_yeast_stock_excel( os.path.join( data_dir, 'TBP_yeast_stocks.txt' )  )
     df.to_csv( 'strains_exp.csv' )
@@ -303,3 +374,5 @@ if __name__=='__main__':
     create_plasmids( os.path.join( data_dir, 'TBP_plasmids.csv' ) )
 
     create_strains( os.path.join( data_dir, 'TBP_yeast_stocks.txt' ), users[0] )
+
+    create_ecoli_stocks( os.path.join( data_dir, 'TBP_Ecoli_stocks_20160420.xlsx' ) )
