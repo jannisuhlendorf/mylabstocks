@@ -1,6 +1,6 @@
 from peewee import *
 
-database = MySQLDatabase('test_labstocks_db', **{'host': 'localhost', 'user': 'superuser'})
+database = MySQLDatabase('test_labstocks_db', host='127.0.0.1', user='superuser', port=3306) 
 
 class UnknownField(object):
     pass
@@ -111,6 +111,7 @@ class Plasmids(BaseModel):
     checkings = CharField(db_column='Checkings', null=True)
     construction_description = TextField(db_column='Construction_Description', null=True)
     ekb = IntegerField(db_column='EKB', null=True)
+    ekp = PrimaryKeyField(db_column='EKP')
     insert_ = CharField(db_column='Insert_', null=True)
     insert_type = CharField(db_column='Insert_Type', null=True)
     link_to_file = CharField(db_column='Link_to_file', null=True, unique=True)
@@ -138,12 +139,11 @@ class EcoliStocks(BaseModel):
     author = ForeignKeyField(db_column='Author', null=True, rel_model=LabMembers, to_field='id')
     comments = TextField(db_column='Comments', null=True)
     date_ = DateField(db_column='Date_', null=True)
-    ekb_no = PrimaryKeyField(db_column='EKB_no')
+    ekb = PrimaryKeyField(db_column='EKB')
     features_marker = CharField(db_column='Features_Marker', null=True)
-    insertion = CharField(db_column='Insert', null=True) #calling this attribute 'insert' gives a TypeError when trying to insert() something into the table
     name_ = CharField(db_column='Name_')
     original_no = IntegerField(db_column='Original_no', null=True)
-    plasmid = ForeignKeyField(db_column='Plasmid', null=True, rel_model=Plasmids, to_field='id')
+    plasmid = ForeignKeyField(db_column='Plasmid', null=True, rel_model=Plasmids, to_field='ekp')
     source = CharField(db_column='Source', null=True)
 
     class Meta:
@@ -384,6 +384,7 @@ class Strains(BaseModel):
     comments = TextField(db_column='Comments', null=True)
     cytoplasmic_character = CharField(db_column='Cytoplasmic_Character', null=True)
     date_ = DateField(db_column='Date_', null=True)
+    eky = PrimaryKeyField(db_column='EKY')
     general_background = CharField(db_column='General_Background')
     genotype = CharField(db_column='Genotype', null=True)
     growth_req = CharField(db_column='Growth_req', null=True)
@@ -397,12 +398,12 @@ class Strains(BaseModel):
     obtained_by = CharField(db_column='Obtained_by', null=True)
     parental_strain = CharField(db_column='Parental_strain', null=True)
     phenotype = CharField(db_column='Phenotype', null=True)
-    plasmid = ForeignKeyField(db_column='Plasmid', null=True, rel_model=Plasmids, to_field='id')
+    plasmid = ForeignKeyField(db_column='Plasmid', null=True, rel_model=Plasmids, to_field='ekp')
     reference_ = CharField(db_column='Reference_', null=True)
     sgd = CharField(db_column='SGD_ID', null=True)
     trp1 = CharField(db_column='TRP1', null=True)
     ura3 = CharField(db_column='URA3', null=True)
-    clone_no = IntegerField(null=True)
+    clone_no = CharField(null=True)
     labbook_reference = CharField(null=True)
     locus1 = CharField(null=True)
     locus2 = CharField(null=True)

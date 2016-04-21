@@ -230,9 +230,19 @@ $opts['fdd']['Plasmid'] = array(
   'values' => array(
     'table'  => 'plasmids',
     'column' => 'EKP',
-    'description' => 'Name_',
-  ),
+    'description' => array(
+      'columns' => array( 'Name_', 'EKP' ),
+      'divs' => array( ' (', ')' )
+      )),
   'sort'     => true
+);
+$opts['fdd']['virt'] = array(
+  'name'     => 'Plasmd link',
+  'select'   => 'T',
+  'maxlen'   => 300,
+  'sort'     => true,
+  'sql'      => 'Plasmid',
+  'URL'      => 'plasmids.php?PME_sys_fl=$value&PME_sys_fm=0&PME_sys_operation=PME_op_View&PME_sys_rec=1'
 );
 $opts['fdd']['ADE2'] = array(
   'name'     => 'ADE2',
@@ -361,6 +371,7 @@ $opts['fdd']['storage_box'] = array(
   'maxlen'   => 1500,
   'sort'     => true
 );
+
 
 // TRIGGER
 // Before displaying the view page

@@ -1,3 +1,4 @@
+
 <?php
 session_start ();
 require("headers.php");
@@ -55,11 +56,11 @@ $opts['navigation'] = 'UDBG';
 
 // Display special page elements
 $opts['display'] = array(
-	'form'  => true,
-	'query' => true,
-	'sort'  => true,
-	'time'  => true,
-	'tabs'  => true
+  'form'  => true,
+  'query' => true,
+  'sort'  => true,
+  'time'  => true,
+  'tabs'  => true
 );
 
 // Set default prefixes for variables
@@ -146,15 +147,9 @@ $opts['fdd']['Plasmid'] = array(
   'maxlen'   => 10,
   'values' => array(
     'table'  => 'plasmids',
-    'column' => 'EKP',
-    'description' => 'Name_'
+    'column' => 'EKP'
   ),
-  'sort'     => true
-);
-$opts['fdd']['Insert'] = array(
-  'name'     => 'Insert',
-  'select'   => 'T',
-  'maxlen'   => 1500,
+
   'sort'     => true
 );
 $opts['fdd']['Source'] = array(
@@ -195,13 +190,6 @@ $opts['fdd']['Comments'] = array(
     'cols' => 50),
   'sort'     => true
 );
-
-// TRIGGER
-// Before displaying the view page
-//$opts['triggers']['select']['pre'][] = 'strains.TSP.php';
-//$opts['triggers']['select']['pre'][]    = 'strains.MVC.php';
-//$opts['triggers']['update']['pre'][]    = 'strains.MVC.php';
-
 
 require("footers.php");
 ?>

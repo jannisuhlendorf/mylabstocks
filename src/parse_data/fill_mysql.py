@@ -94,7 +94,7 @@ def create_plasmids( csv_list ):
     plasmids = pd.read_csv( csv_list )
 
     # insert empty plasmid to be able to not select a plasmid in strain table
-    labstocks.Plasmids.insert( id=0 ).execute()
+    labstocks.Plasmids.insert( ekp=0 ).execute()
 
     for pos,row in plasmids.iterrows():
 
@@ -112,7 +112,7 @@ def create_plasmids( csv_list ):
             ekp = int(row['EKP No.']) 
         except:
             if row['EKP No.'] == '61a':
-                ekp = 331
+                ekp = 362
 
         if not pd.isnull(row['Vector']):
             name_ = row['Vector']
@@ -136,7 +136,7 @@ def create_plasmids( csv_list ):
         else:
             bacterial_selection = ''
 
-        if ekp==331: # weird entry. TODO: solve this prior to insertion
+        if ekp==362: # weird entry. TODO: solve this prior to insertion
             construction_description = "!!! Attention: No. 61b !!!\n" + construction_description
 
         # parse yeast selection markers
@@ -155,7 +155,7 @@ def create_plasmids( csv_list ):
             if p.lower() in markers.lower():
                 promoter = p
 
-        labstocks.Plasmids.insert( id=ekp,
+        labstocks.Plasmids.insert( ekp=ekp,
                                    name_ = name_,
                                    insert_ = insert_,
                                    ekb = ekb,
@@ -204,7 +204,7 @@ def create_strains( txt_path, user ):
             date = None
         else:
             date = row.date
-        labstocks.Strains.insert( id = row.ID,
+        labstocks.Strains.insert( eky = row.ID,
                                   author = user,
                                   comments = row.comments,
                                   phenotype = row.phenotype,
@@ -263,10 +263,10 @@ def create_ecoli_stocks( txt_path ):
 
         print row, df.loc[row, 'E.coli strain'], datum, plasmid, df.loc[row, 'Source'], df.loc[row, 'Features/ Marker'], author, comment
 
-        labstocks.EcoliStocks.insert( ekb_no = row,
-                                       name_ = df.loc[row, 'E.coli strain'],
-                                       date_ = datum,
-                                       plasmid = plasmid,
+        labstocks.EcoliStocks.insert( ekb = row, 
+                                      name_ = df.loc[row, 'E.coli strain'],
+                                      date_ = datum,
+                                      plasmid = plasmid,
 #                                       insertion = df.loc[row, 'Insert'],
                                        source = df.loc[row, 'Source'],
                                        features_marker = df.loc[row, 'Features/ Marker'],
@@ -354,8 +354,8 @@ def convert_yeast_stock_excel( path ):
 
 if __name__=='__main__':
 
-    #data_dir = '../../../data/' # when Jannis updates
-    data_dir = '/home/jwodke/Desktop/job/projects/labDB/jannis/lab_db2/data/' # on my computer!
+    data_dir = '../../../data/' # when Jannis updates
+    #data_dir = '/home/jwodke/Desktop/job/projects/labDB/jannis/lab_db2/data/' # on my computer!
 
     df = convert_yeast_stock_excel( os.path.join( data_dir, 'TBP_yeast_stocks.txt' )  )
     df.to_csv( 'strains_exp.csv' )
