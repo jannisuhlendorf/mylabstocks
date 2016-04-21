@@ -146,11 +146,37 @@ $opts['fdd']['Plasmid'] = array(
   'select'   => 'T',
   'maxlen'   => 10,
   'values' => array(
-    'table'  => 'plasmids',
-    'column' => 'EKP'
-  ),
-
+  'table'  => 'plasmids',
+  'column' => 'EKP',
+  'description' => array(
+   'columns' => array( 'Name_', 'EKP' ),
+   'divs' => array( ' (', ')' )
+   )),
   'sort'     => true
+);
+$opts['fdd']['virt'] = array(
+  'name'     => 'Plasmd link',
+  'select'   => 'T',
+  'input'    => 'V',
+  'maxlen'   => 300,
+  'sort'     => true,
+  'sql'      => 'Plasmid',
+  'URL'      => 'plasmids.php?PME_sys_fl=$value&PME_sys_fm=0&PME_sys_operation=PME_op_View&PME_sys_rec=1'
+);
+$opts['fdd']['virt2'] = array(
+  'name'     => 'Insert',
+  'select'   => 'T',
+  'input'    => 'V',
+  'options'  => 'L',
+  'maxlen'   => 300,
+  'sort'     => true,
+  'values'   => array(
+    'table' => 'plasmids',
+    'column' => 'Insert_',
+    'description' => 'Insert_',
+    'join' => '$main_table.EKB = $join_table.EKP'
+    ),
+  'sql'      => 'PMEjoin5.Insert_'
 );
 $opts['fdd']['Source'] = array(
   'name'     => 'Source',
