@@ -29,7 +29,7 @@ $opts['dbh'] = $connexion;
 $opts['tb'] = $tb;
 
 // Name of field which is the unique key
-$opts['key'] = 'ID';
+$opts['key'] = 'EKP';
 
 // Type of key field (int/real/string/date etc.)
 $opts['key_type'] = 'int';
@@ -123,8 +123,8 @@ appear in generated list. Here are some most used field options documented.
 
 
 
-$opts['fdd']['ID'] = array(
-  'name'     => 'ID',
+$opts['fdd']['EKP'] = array(
+  'name'     => 'EKP',
   'select'   => 'T',
   'maxlen'   => 10,
   'sort'     => true

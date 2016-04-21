@@ -6,7 +6,7 @@ $all = $this->myQuery("SELECT * FROM ".$this->tb);
 // reach the strain displayed
 $found = 0;
 while(!$found && $strain = mysql_fetch_object($all)){
-	if ($strain->id == $this->rec)
+	if ($strain->EKY == $this->rec)
 		$found = 1;
 }
 

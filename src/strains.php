@@ -68,13 +68,13 @@ $opts['dbh'] = $connexion;
 $opts['tb'] = $tb;
 
 // Name of field which is the unique key
-$opts['key'] = 'ID';
+$opts['key'] = 'EKY';
 
 // Type of key field (int/real/string/date etc.)
 $opts['key_type'] = 'int';
 
 // Sorting field(s)
-$opts['sort_field'] = array('ID');
+$opts['sort_field'] = array('EKY');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
@@ -160,8 +160,8 @@ appear in generated list. Here are some most used field options documented.
   descriptions fields are also possible. Check documentation for this.
 */
 
-$opts['fdd']['ID'] = array(
-  'name'     => 'ID',
+$opts['fdd']['EKY'] = array(
+  'name'     => 'EKY',
   'select'   => 'T',
   'maxlen'   => 10,
   'sort'     => true
@@ -229,7 +229,7 @@ $opts['fdd']['Plasmid'] = array(
   'maxlen'   => 10,
   'values' => array(
     'table'  => 'plasmids',
-    'column' => 'id',
+    'column' => 'EKP',
     'description' => 'Name_',
   ),
   'sort'     => true

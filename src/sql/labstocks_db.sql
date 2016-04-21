@@ -780,7 +780,7 @@ DROP TABLE IF EXISTS `plasmids`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `plasmids` (
-  `id` int(10) unsigned NOT NULL,
+  `EKP` int(10) unsigned NOT NULL,
   `Name_` varchar(250) DEFAULT NULL,
   `Other_names` varchar(250) DEFAULT NULL,
   `date_` date DEFAULT NULL,
@@ -805,7 +805,7 @@ CREATE TABLE `plasmids` (
   `storage_minus80freezers` varchar(100) DEFAULT NULL,
   `storage_fridges` varchar(100) DEFAULT NULL,
   `storage_rooms` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`EKP`),
   UNIQUE KEY `Link_to_file` (`Link_to_file`),
   UNIQUE KEY `Link_to_file_2` (`Link_to_file`),
   KEY `Author` (`Author`),
@@ -1154,7 +1154,7 @@ DROP TABLE IF EXISTS `strains`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `strains` (
-  `id` int(10) unsigned NOT NULL,
+  `EKY` int(10) unsigned NOT NULL,
   `Name_` varchar(250) NOT NULL,
   `Date_` date DEFAULT NULL,
   `Genotype` varchar(500) DEFAULT NULL,
@@ -1185,10 +1185,10 @@ CREATE TABLE `strains` (
   `Cytoplasmic_Character` varchar(250) DEFAULT NULL,
   `Author` varchar(50) DEFAULT NULL,
   `storage_box` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`EKY`),
   KEY `Author` (`Author`),
   CONSTRAINT `strains_ibfk_1` FOREIGN KEY (`Author`) REFERENCES `lab_members` (`id`),
-  CONSTRAINT `strains_ibfk_2` FOREIGN KEY (`Plasmid`) REFERENCES `plasmids` (`id`)
+  CONSTRAINT `strains_ibfk_2` FOREIGN KEY (`Plasmid`) REFERENCES `plasmids` (`EKP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1210,19 +1210,18 @@ DROP TABLE IF EXISTS `ecoli_stocks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ecoli_stocks` (
-  `EKB_no` int(10) unsigned NOT NULL,
+  `EKB` int(10) unsigned NOT NULL,
   `Name_` varchar(250) NOT NULL,
   `Date_` date DEFAULT NULL,
   `Plasmid` int(10) unsigned DEFAULT NULL,
-  `Insert` varchar(500) DEFAULT NULL,
-  `Source` varchar(500) DEFAULT NULL,
+  /*`Insert` varchar(500) DEFAULT NULL,*/
   `Features_Marker` varchar(500) DEFAULT NULL,
   `Original_no` int(10) DEFAULT NULL,
   `Author` varchar(50) DEFAULT NULL,
   `Comments` longtext,
-  PRIMARY KEY (`EKB_no`),
+  PRIMARY KEY (`EKB`),
   KEY `Author` (`Author`),
-  CONSTRAINT  `ecoli_stocks_ibfk_1` FOREIGN KEY (`PLasmid`) REFERENCES `plasmids` (`id`),
+  CONSTRAINT  `ecoli_stocks_ibfk_1` FOREIGN KEY (`PLasmid`) REFERENCES `plasmids` (`EKP`),
   CONSTRAINT  `ecoli_stocks_ibfk_2` FOREIGN KEY (`Author`) REFERENCES `lab_members` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;

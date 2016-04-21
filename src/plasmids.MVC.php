@@ -3,7 +3,7 @@
 
 require_once("lib/seq.lib.php");
 // a Trigger to display plsmid map image
-$all = $this->myQuery("SELECT * FROM " . $this->tb . " WHERE id=" . $this->rec);
+$all = $this->myQuery("SELECT * FROM " . $this->tb . " WHERE EKP=" . $this->rec);
 // reach the plasmid displayed
 $plasmid = mysql_fetch_object($all);
 
@@ -16,9 +16,9 @@ if ($plasmid) {
         unlink($to_rem_file);
       }
     }
-    $reqsql = "UPDATE  plasmids SET sequence='', Link_to_file=''  WHERE  id = $this->rec";
+    $reqsql = "UPDATE  plasmids SET sequence='', Link_to_file=''  WHERE  EKP = $this->rec";
     mysql_query($reqsql);
-    $all = $this->myQuery("SELECT * FROM " . $this->tb . " WHERE id=" . $this->rec);
+    $all = $this->myQuery("SELECT * FROM " . $this->tb . " WHERE EKP=" . $this->rec);
     $plasmid = mysql_fetch_object($all);
   }
 
@@ -80,9 +80,9 @@ if ($plasmid) {
       $seq = $matches[0];
       $seq = preg_replace("#ORIGIN#", "", $seq);
       $seq = preg_replace("#[^a-zA-Z]#ms", "", $seq);
-      $reqsql = "UPDATE  plasmids SET sequence='$seq', Link_to_file='$dest_filename'  WHERE  id = $this->rec";
+      $reqsql = "UPDATE  plasmids SET sequence='$seq', Link_to_file='$dest_filename'  WHERE  EKP = $this->rec";
       mysql_query($reqsql);
-      $all = $this->myQuery("SELECT * FROM " . $this->tb . " WHERE id=" . $this->rec);
+      $all = $this->myQuery("SELECT * FROM " . $this->tb . " WHERE EKP=" . $this->rec);
       $plasmid = mysql_fetch_object($all);
     }
   }

@@ -9,13 +9,13 @@ $link_to_plasmids = array();
 $link_to_oligos = array();
 
 // Plasmids
-$all = $this->myQuery("SELECT * FROM " . $this->tb . " WHERE id=" . $this->rec);
+$all = $this->myQuery("SELECT * FROM " . $this->tb . " WHERE EKY=" . $this->rec);
 // reach the strain displayed
 $strain = mysql_fetch_object($all);
 $plasmids_id_str = $strain->relevant_plasmids;
 $plasmids_ids = preg_split('/;|,| /', $plasmids_id_str, -1, PREG_SPLIT_NO_EMPTY); 
 foreach ($plasmids_ids as $plasmids_id) {
-  $req = "SELECT COUNT(*) FROM plasmids WHERE ID=\"$plasmids_id\"";
+  $req = "SELECT COUNT(*) FROM plasmids WHERE EKY=\"$plasmids_id\"";
   // print($req);
   $tmp_plasmids = mysql_fetch_array($this->myQuery($req));
   // pre_print_r($tmp_plasmids);
@@ -28,7 +28,7 @@ foreach ($plasmids_ids as $plasmids_id) {
 $link_to_plasmids = implode(",", $link_to_plasmids);
   
 // Oligos
-$all = $this->myQuery("SELECT * FROM " . $this->tb . " WHERE id=" . $this->rec);
+$all = $this->myQuery("SELECT * FROM " . $this->tb . " WHERE EKY=" . $this->rec);
 // reach the strain displayed
 $strain = mysql_fetch_object($all);
 $oligos_id_str = $strain->relevant_oligos;
