@@ -22,7 +22,7 @@ require_once ("connect_entry.php");
             <li id="pl_features"><span><a href="pl_features.php"> Plasmids Features </a></span></li>
             <li id="strains"><span><a href="strains.php"> Strains </a></span></li>
             <li id="oligos"><span><a href="oligos.php"> Oligos </a></span></li>
-            <li id="ecoli"><span><a href="ecoli_stocks.php"> E. coli </a></span></li>
+            <li id="ecoli_stocks"><span><a href="ecoli_stocks.php"> E. coli </a></span></li>
             <li id="antibodies"><span><a href="antibodies.php"> Antibodies </a></span></li>
             <li id="cl_name"><span><a href="cl_name.php"> Cell Line Names </a></span></li>
             <li id="cl_passages"><span><a href="cl_passages.php"> Cell Line Passages </a></span></li>
