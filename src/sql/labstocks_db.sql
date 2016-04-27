@@ -781,26 +781,26 @@ DROP TABLE IF EXISTS `plasmids`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `plasmids` (
   `EKP` int(10) unsigned NOT NULL,
-  `Name_` varchar(250) DEFAULT NULL,
+  `Name_plasmid` varchar(250) DEFAULT NULL,
   `Other_names` varchar(250) DEFAULT NULL,
-  `date_` date DEFAULT NULL,
+  `date_plasmid` date DEFAULT NULL,
   `Checkings` varchar(200) DEFAULT NULL,
   `Type_` varchar(500) DEFAULT NULL,
   `Markers` varchar(300) DEFAULT NULL,
-  `EKB` int(10) DEFAULT NULL,
+  `EKB_no` int(10) DEFAULT NULL,
   `Bacterial_selection` varchar(250) DEFAULT NULL,
   `Tags` varchar(250) DEFAULT NULL,
   `parent_vector` varchar(500) DEFAULT NULL,
   `Insert_` varchar(250) DEFAULT NULL,
   `Insert_Type` varchar(250) DEFAULT NULL,
   `Construction_Description` longtext,
-  `Reference_` varchar(500) DEFAULT NULL,
+  `Reference_pl` varchar(500) DEFAULT NULL,
   `Reporter` varchar(250) DEFAULT NULL,
   `Promoter` varchar(250) DEFAULT NULL,
   `Link_to_file` varchar(100) DEFAULT NULL,
   `sequence` text,
   `image_file` varchar(100) DEFAULT NULL,
-  `Author` varchar(50) DEFAULT NULL,
+  `Author_pl` varchar(50) DEFAULT NULL,
   `storage_minus20freezers` varchar(100) DEFAULT NULL,
   `storage_minus80freezers` varchar(100) DEFAULT NULL,
   `storage_fridges` varchar(100) DEFAULT NULL,
@@ -808,8 +808,8 @@ CREATE TABLE `plasmids` (
   PRIMARY KEY (`EKP`),
   UNIQUE KEY `Link_to_file` (`Link_to_file`),
   UNIQUE KEY `Link_to_file_2` (`Link_to_file`),
-  KEY `Author` (`Author`),
-  CONSTRAINT `plasmids_ibfk_1` FOREIGN KEY (`Author`) REFERENCES `lab_members` (`id`)
+  KEY `Author_pl` (`Author_pl`),
+  CONSTRAINT `plasmids_ibfk_1` FOREIGN KEY (`Author_pl`) REFERENCES `lab_members` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
