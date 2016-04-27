@@ -231,7 +231,7 @@ $opts['fdd']['Plasmid'] = array(
     'table'  => 'plasmids',
     'column' => 'EKP',
     'description' => array(
-      'columns' => array( 'Name_', 'EKP' ),
+      'columns' => array( 'Name_plasmid', 'EKP' ),
       'divs' => array( ' (', ')' )
       )),
   'sort'     => true

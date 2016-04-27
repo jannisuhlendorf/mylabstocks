@@ -122,7 +122,6 @@ appear in generated list. Here are some most used field options documented.
   descriptions fields are also possible. Check documentation for this.
 */
 
-
 $opts['fdd']['EKB'] = array(
   'name'     => 'EKB',
   'select'   => 'T',
@@ -144,16 +143,18 @@ $opts['fdd']['Date_'] = array(
 $opts['fdd']['Plasmid'] = array(
   'name'     => 'Plasmid',
   'select'   => 'T',
+  'input'    => 'V',
   'maxlen'   => 10,
+  'options'  => 'A',
   'values' => array(
   'table'  => 'plasmids',
   'column' => 'EKP',
   'description' => array(
-   'columns' => array( 'Name_', 'EKP' ),
+   'columns' => array( 'Name_plasmid', 'EKP' ),
    'divs' => array( ' (', ')' )
    )),
   'sort'     => true
-);
+); 
 $opts['fdd']['virt'] = array(
   'name'     => 'Plasmd link',
   'select'   => 'T',
@@ -174,7 +175,7 @@ $opts['fdd']['virt2'] = array(
     'table' => 'plasmids',
     'column' => 'Insert_',
     'description' => 'Insert_',
-    'join' => '$main_table.EKB = $join_table.EKP'
+    'join' => '$main_table.Plasmid = $join_table.EKP'
     ),
   'sql'      => 'PMEjoin5.Insert_'
 );

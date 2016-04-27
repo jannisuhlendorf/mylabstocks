@@ -122,15 +122,14 @@ appear in generated list. Here are some most used field options documented.
 */
 
 
-
 $opts['fdd']['EKP'] = array(
   'name'     => 'EKP',
   'select'   => 'T',
   'maxlen'   => 10,
   'sort'     => true
 );
-$opts['fdd']['Name_'] = array(
-  'name'     => 'Name ',
+$opts['fdd']['Name_plasmid'] = array(
+  'name'     => 'Name plasmid',
   'select'   => 'T',
   'maxlen'   => 750,
   'sort'     => true
@@ -141,8 +140,8 @@ $opts['fdd']['Other_names'] = array(
   'maxlen'   => 750,
   'sort'     => true
 );
-$opts['fdd']['date_'] = array(
-  'name'     => 'Date ',
+$opts['fdd']['date_plasmid'] = array(
+  'name'     => 'Date plasmid',
   'select'   => 'T',
   'maxlen'   => 10,
   'sort'     => true
@@ -165,8 +164,8 @@ $opts['fdd']['Markers'] = array(
   'maxlen'   => 900,
   'sort'     => true
 );
-$opts['fdd']['EKB'] = array(
-  'name'     => 'EKB',
+$opts['fdd']['EKB_no'] = array(
+  'name'     => 'EKB no',
   'select'   => 'T',
   'maxlen'   => 10,
   'sort'     => true
@@ -210,8 +209,8 @@ $opts['fdd']['Construction_Description'] = array(
     'cols' => 50),
   'sort'     => true
 );
-$opts['fdd']['Reference_'] = array(
-  'name'     => 'Reference ',
+$opts['fdd']['Reference_pl'] = array(
+  'name'     => 'Reference pl',
   'select'   => 'T',
   'maxlen'   => 1500,
   'sort'     => true
@@ -249,8 +248,8 @@ $opts['fdd']['image_file'] = array(
   'maxlen'   => 300,
   'sort'     => true
 );
-$opts['fdd']['Author'] = array(
-  'name'     => 'Author',
+$opts['fdd']['Author_pl'] = array(
+  'name'     => 'Author pl',
   'select'   => 'T',
   'maxlen'   => 150,
   'values' => array(
@@ -284,6 +283,7 @@ $opts['fdd']['storage_rooms'] = array(
   'maxlen'   => 300,
   'sort'     => true
 );
+
 
 //link to sequence file:
 $opts['fdd']['Link_to_file']['URL'] = '$value';

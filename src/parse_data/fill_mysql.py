@@ -156,12 +156,12 @@ def create_plasmids( csv_list ):
                 promoter = p
 
         labstocks.Plasmids.insert( ekp=ekp,
-                                   name_ = name_,
+                                   name_plasmid = name_,
                                    insert_ = insert_,
-                                   ekb = ekb,
+                                   ekb_no = ekb,
                                    construction_description=construction_description,
                                    bacterial_selection=bacterial_selection,
-                                   date_=date_,
+                                   date_plasmid=date_,
                                    markers=markers,
                                    promoter = promoter).execute()
         print
