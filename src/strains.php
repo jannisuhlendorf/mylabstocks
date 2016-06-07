@@ -237,7 +237,7 @@ $opts['fdd']['Plasmid'] = array(
   'sort'     => true
 );
 $opts['fdd']['virt'] = array(
-  'name'     => 'Plasmd link',
+  'name'     => 'Plasmid link',
   'select'   => 'T',
   'input'    => 'V',
   'maxlen'   => 300,
