@@ -162,7 +162,7 @@ $opts['fdd']['virt'] = array(
   'maxlen'   => 300,
   'sort'     => true,
   'sql'      => 'Plasmid',
-  'URL'      => 'plasmids.php?PME_sys_fl=$value&PME_sys_fm=0&PME_sys_operation=PME_op_View&PME_sys_rec=1'
+  'URL'      => 'plasmids.php?PME_sys_fl=0&PME_sys_fm=0&PME_sys_operation=PME_op_View&PME_sys_rec=$value'
 );
 $opts['fdd']['virt2'] = array(
   'name'     => 'Insert',
