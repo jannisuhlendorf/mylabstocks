@@ -318,7 +318,10 @@ def parse_yeast_stock( txt_path ):
         eky, name = d['EKY'].split( str(ID) + '.', 1 )
         d['name'] = name.strip()
         d['date'] = parse_date( d['date'] )
-        
+
+        if d['plasmid'].strip() != '':
+            d['comments'] += 'Plasmids:' + d['plasmid'].strip()
+            
         df = df.append( d, ignore_index=True )
     return df
 
