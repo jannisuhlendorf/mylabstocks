@@ -307,6 +307,9 @@ def parse_yeast_stock( txt_path ):
         parsed = []
         
         for pos,key in enumerate(key_external):
+            print rest
+            print key
+            print strain
             this, rest = rest.split( key, 1)
             this = this.strip()
             while this.startswith(':'): 
@@ -321,7 +324,7 @@ def parse_yeast_stock( txt_path ):
 
         if d['plasmid'].strip() != '':
             d['comments'] += 'Plasmids:' + d['plasmid'].strip()
-            
+
         df = df.append( d, ignore_index=True )
     return df
 
