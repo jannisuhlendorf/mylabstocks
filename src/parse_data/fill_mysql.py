@@ -107,12 +107,15 @@ def create_plasmids( csv_list ):
         marker_1 = marker_2 = name_ = promoter = reference_ = reporter = tags = type_ = ''
         #date_ = None
 
-        ekb = markers = ''
+        ekb = markers = other_names = ''
+
         try:
             ekp = int(row['EKP No.']) 
         except:
             if row['EKP No.'] == '61a':
-                ekp = 362
+                ekp = len(plasmids)
+                other_names = '61a'
+
 
         if not pd.isnull(row['Vector']):
             name_ = row['Vector']
@@ -163,7 +166,8 @@ def create_plasmids( csv_list ):
                                    bacterial_selection=bacterial_selection,
                                    date_plasmid=date_,
                                    markers=markers,
-                                   promoter = promoter).execute()
+                                   promoter = promoter,
+                                   other_names=other_names).execute()
         print
         print ekp
         print name_
@@ -261,7 +265,8 @@ def create_ecoli_stocks( txt_path ):
         else:
             plasmid = df.loc[row, 'EKP No.']
 
-        print row, df.loc[row, 'E.coli strain'], datum, plasmid, df.loc[row, 'Source'], df.loc[row, 'Features/ Marker'], author, comment
+        print row
+        print row, df.loc[row, 'E.coli strain'], datum, plasmid, df.loc[row, 'Source'], df.loc[row, 'Feature/Marker'], author, comment
 
         labstocks.EcoliStocks.insert( ekb = row, 
                                       name_ = df.loc[row, 'E.coli strain'],
@@ -269,7 +274,7 @@ def create_ecoli_stocks( txt_path ):
                                       plasmid = plasmid,
 #                                       insertion = df.loc[row, 'Insert'],
                                        source = df.loc[row, 'Source'],
-                                       features_marker = df.loc[row, 'Features/ Marker'],
+                                       features_marker = df.loc[row, 'Feature/Marker'],
                                        author = author,
                                        comments = comment ).execute()
 
