@@ -806,8 +806,6 @@ CREATE TABLE `plasmids` (
   `storage_fridges` varchar(100) DEFAULT NULL,
   `storage_rooms` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`EKP`),
-  UNIQUE KEY `Link_to_file` (`Link_to_file`),
-  UNIQUE KEY `Link_to_file_2` (`Link_to_file`),
   KEY `Author_pl` (`Author_pl`),
   CONSTRAINT `plasmids_ibfk_1` FOREIGN KEY (`Author_pl`) REFERENCES `lab_members` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
