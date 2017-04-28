@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
 import pandas as pd
+import numpy as np
 import labstocks
+import peewee
 import json
 import time
 
@@ -17,12 +19,15 @@ class LabDBExporter:
 			column_names = [cm.name for cm in query.column_meta]
 		else:
 			column_names = self._specify_tables[table_name]
+		for pos, cm in enumerate(query.column_meta):
+			if isinstance(cm, peewee.PrimaryKeyField):
+				column_names[column_names.index(cm.name)] = cm.name.upper()
 		df = pd.DataFrame(columns=column_names)
 		for row in query:
-			values = [row.__getattribute__(attr) for attr in column_names]
+			values = [row.__getattribute__(attr.lower()) for attr in column_names]
 			values = [v.get_id() if isinstance(v, labstocks.BaseModel) else v for v in values]
 			df.loc[len(df)] = values
-		return self._df_float_to_int(df)
+		return df
 
 	def write_table_as_excel(self, table_name, full=False):
 		df = self.get_table_as_pandas(table_name, full)
@@ -35,8 +40,10 @@ class LabDBExporter:
 		txt = u''
 		for index, row in df.iterrows():
 			for key in df:
-				if row[key] is None:
+				if row[key] is None or pd.isnull(row[key]):
 					elem = ''
+				elif isinstance(row[key], float):
+					elem = int(row[key])
 				else:
 					elem = row[key]
 				txt += key + ': ' + unicode(elem) + '\n'
@@ -56,8 +63,12 @@ class LabDBExporter:
 	def _df_float_to_int(df):
 		""" convert all float columns in a pandas dataframe to int """
 		positions_to_cast = [pos for (pos, dtype) in enumerate(df.dtypes) if dtype==float]
+		print df.dtypes
+		print df.columns
+		print positions_to_cast
 		for pos in positions_to_cast:
-			df.iloc[:, pos] = df.iloc[:, pos].astype(int)
+			print df.iloc[:, pos]
+			df.iloc[:, pos] = df.iloc[:, pos].astype(np.int)
 		return df
 
 
